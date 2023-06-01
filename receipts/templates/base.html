@@ -8,31 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Receipts</title>
     <nav>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'category_list' %}">Categories</a></li>
-        <li><a href="{% url 'account_list' %}">Account</a></li>
-        <li><a href="{% url 'create_receipt' %}">Create Receipt</a></li>
-        <li><a href="{% url 'create_category' %}">Create Category</a></li>
-        <li><a href="{% url 'create_account' %}">Create Account</a></li>
-        {% endif %}
-    </nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'category_list' %}">Categories</a></li>
+            <li><a href="{% url 'account_list' %}">Account</a></li>
+            <li><a href="{% url 'create_receipt' %}">Create Receipt</a></li>
+            <li><a href="{% url 'create_category' %}">Create Category</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
 </head>
 
 <body>
     {% block content %}
-    <header>
-        <nav>
-            <ul>
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-    {% endblock content %}
 </body>
 
 </html>
+{% endblock content %}
