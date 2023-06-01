@@ -17,13 +17,11 @@ def signup(request):
                 login(request, user)
                 return redirect("home")
             else:
-                form.add_error(
-                    "password", "Password does not match, please try again!"
-                )
+                form.add_error("password", "the passwords do not match")
     else:
         form = SignUpForm()
     context = {"form": form}
-    return render(request, "accounts/singup.html", context)
+    return render(request, "accounts/signup.html", context)
 
 
 def user_login(request):
