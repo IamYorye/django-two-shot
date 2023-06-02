@@ -1,37 +1,55 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List of Receipts</title>
-</head>
-
-<body>
-    <header>
-        <nav>
-            {% if user.is_authenticated %}
-            <li><a href="{% url 'category_list' %}">Categories</a></li>
-            <li><a href="{% url 'account_list' %}">Account</a></li>
-            <li><a href="{% url 'create_receipt' %}">Create Receipt</a></li>
-            <li><a href="{% url 'create_category' %}">Create Category</a></li>
-            {% endif %}
-        </nav>
-        <nav>
-            <ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>List of Receipts</title>
+    </head>
+    <body>
+        <header>
+            <nav>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                {% else %}
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                    <li>
+                        <a href="{% url 'home' %}">My Receipts</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'category_list' %}">My Categories</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'account_list' %}">My Accounts</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'create_receipt' %}">Create Receipt</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'create_category' %}">Create Category</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'create_account' %}">Create Account</a>
+                    </li>
                 {% endif %}
-            </ul>
-        </nav>
-    </header>
-    {% block content %}
-    {% endblock content %}
-</body>
-
+            </nav>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'signup' %}">Sign Up</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock content %}
+    </body>
 </html>
